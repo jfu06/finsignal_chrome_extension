@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>FinSignal</title>
+  <style>
+    html, body { margin: 0; padding: 0; height: 100%; }
+    body { display: flex; flex-direction: column;
+           font: 13px -apple-system, system-ui, sans-serif; }
+    /* persistent brand bar: identity + the way out to the full site */
+    #bar {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 12px; background: #0E7A6E; color: #fff;
+      flex: 0 0 auto;
+    }
+    #bar .brand { font-weight: 700; font-size: 14px; }
+    #bar .brand small { font-weight: 400; opacity: 0.8; margin-left: 6px; }
+    #open {
+      margin-left: auto; background: rgba(255,255,255,0.16); color: #fff;
+      text-decoration: none; font-weight: 600; font-size: 12.5px;
+      padding: 5px 12px; border-radius: 99px; white-space: nowrap;
+    }
+    #open:hover { background: rgba(255,255,255,0.28); }
+    #app { width: 100%; border: 0; flex: 1 1 auto; background: #FAFAF7; }
+    #hint { color: #5D6771; padding: 12px 14px; flex: 0 0 auto; }
+    #hint a { color: #0E7A6E; }
+  </style>
+</head>
+<body>
+  <div id="bar">
+    <span class="brand">📊 FinSignal<small>SEC filings Q&amp;A</small></span>
+    <a id="open" href="#" target="_blank" rel="noopener">Open full site ↗</a>
+  </div>
+  <div id="hint" hidden>
+    Loading FinSignal… If nothing appears, use <b>Open full site</b> above
+    or set the app URL in the extension options.
+  </div>
+  <iframe id="app" allow="clipboard-write"></iframe>
+  <script src="sidepanel.js"></script>
+</body>
+</html>

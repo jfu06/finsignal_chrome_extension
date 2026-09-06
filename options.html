@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>FinSignal — Options</title>
+  <style>
+    body { font: 14px -apple-system, system-ui, sans-serif; color: #1F262B;
+           max-width: 560px; margin: 40px auto; padding: 0 16px; }
+    h1 { font-size: 18px; } h1 span { color: #0E7A6E; }
+    label { display: block; margin: 16px 0 6px; font-weight: 600; }
+    input { width: 100%; padding: 8px 10px; font-size: 14px;
+            border: 1px solid #D5DAD5; border-radius: 8px; box-sizing: border-box; }
+    button { margin-top: 12px; padding: 8px 18px; font-size: 14px;
+             background: #0E7A6E; color: #fff; border: 0; border-radius: 8px;
+             cursor: pointer; }
+    #saved { color: #0E7A6E; margin-left: 10px; }
+    p.small { color: #75808A; font-size: 12.5px; }
+  </style>
+</head>
+<body>
+  <h1>Fin<span>Signal</span> options</h1>
+  <label for="url">App URL</label>
+  <input id="url" type="url"
+         placeholder="https://your-finsignal-deployment.streamlit.app" />
+  <p class="small">The side panel embeds this FinSignal deployment.
+     Leave empty to use the public demo. Self-hosters: point it at your
+     own instance.</p>
+  <button id="save">Save</button><span id="saved" hidden>Saved ✓</span>
+  <script src="options.js"></script>
+</body>
+</html>
