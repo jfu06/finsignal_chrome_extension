@@ -27,13 +27,17 @@ function tickerFromSelection(text) {
   return /^[A-Z]{1,6}(\.[A-Z]{1,2})?$/.test(cleaned) ? cleaned : null;
 }
 
-chrome.contextMenus.onClicked.addListener(async (info, tab) => {
+chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId !== MENU_ID) return;
+  // sidePanel.open() must run synchronously within the user-gesture call
+  // chain — ANY preceding await drops the gesture context and Chrome
+  // rejects the call. Open first; the panel picks the ticker up via its
+  // storage.onChanged listener a moment later.
+  if (tab && tab.id !== undefined) {
+    chrome.sidePanel.open({ tabId: tab.id }).catch(() => {});
+  }
   const ticker = tickerFromSelection(info.selectionText);
   if (ticker) {
-    await chrome.storage.session.set({ ticker });
-  }
-  if (tab && tab.id !== undefined) {
-    await chrome.sidePanel.open({ tabId: tab.id });
+    chrome.storage.session.set({ ticker });
   }
 });
