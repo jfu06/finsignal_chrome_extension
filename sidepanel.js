@@ -4,7 +4,7 @@
 // bar's "Open full site" always links to the same view in a full tab.
 
 const DEFAULT_APP_URL =
-  "https://finsignal-production-a76f.up.railway.app";
+  "https://finsignal-ui.up.railway.app";
 
 async function appUrl() {
   const { appUrl } = await chrome.storage.sync.get("appUrl");
